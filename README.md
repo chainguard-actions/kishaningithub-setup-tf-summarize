@@ -1,1 +1,69 @@
-# kishaningithub-setup-tf-summarize
+# Setup tf-summarize
+
+[![ci](https://github.com/kishaningithub/setup-tf-summarize/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kishaningithub/setup-tf-summarize/actions/workflows/test.yml)
+
+This action installs [tf-summarize](https://github.com/dineshba/tf-summarize) in
+GitHub Action runner.
+
+## Usage
+
+This action can be used to install
+[tf-summarize](https://github.com/dineshba/tf-summarize) on all platforms
+(Linux, Mac and Windows). When running on windows we recommend setting the shell
+to Bash.
+
+The default configuration installs the latest version of tf-summarize
+
+```yaml
+steps:
+  - uses: kishaningithub/setup-tf-summarize@v3
+```
+
+A specific version of tf-summarize can also be installed
+
+```yaml
+steps:
+  - uses: kishaningithub/setup-tf-summarize@v3
+    with:
+      tf-summarize-version: v0.3.1
+```
+
+If for any reason you need to use a separate GitHub token that is also
+supported, by default it uses `GITHUB_TOKEN`.
+
+```yaml
+steps:
+  - uses: kishaningithub/setup-tf-summarize@v3
+    with:
+      github-token: ${{ secrets.MY_PAT }}
+```
+
+A general purpose full example
+
+```yaml
+name: Run tf-summarize
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: kishaningithub/setup-tf-summarize@v3
+
+      - name: Print tf-summarize version and help
+        run: |
+          tf-summarize -v
+          tf-summarize -h
+```
+
+## Contributing
+
+Contributions are most welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md)
+
+## Privacy
+
+This Action contacts Chainguard's licensing server to verify authorization. Connection metadata (IP address, GitHub repository identifier, timestamp, and any metadata encoded in the auth token) is transmitted to Chainguard, Inc. even if authorization is denied in accordance with our [Privacy Notice](https://www.chainguard.dev/legal/privacy-notice)

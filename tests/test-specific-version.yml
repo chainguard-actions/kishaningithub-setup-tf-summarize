@@ -1,0 +1,30 @@
+name: Test specific version installation
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          tf-summarize-version: v0.3.10
+      - name: Assert tf-summarize is installed and on PATH
+        run: |
+          echo "Checking tf-summarize is available..."
+          if ! command -v tf-summarize &>/dev/null; then
+            echo "FAIL: tf-summarize not found on PATH"
+            exit 1
+          fi
+          echo "PASS: tf-summarize is on PATH"
+      - name: Assert tf-summarize reports the expected version
+        run: |
+          VERSION_OUTPUT=$(tf-summarize -v 2>&1 || tf-summarize --version 2>&1 || true)
+          echo "version output: $VERSION_OUTPUT"
+          if echo "$VERSION_OUTPUT" | grep -q "0.3.10"; then
+            echo "PASS: version matches 0.3.10"
+          else
+            echo "FAIL: expected version 0.3.10 but got: $VERSION_OUTPUT"
+            exit 1
+          fi

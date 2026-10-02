@@ -1,0 +1,20 @@
+name: 'Setup tf-summarize'
+description: 'Sets up tf-summarize CLI in your GitHub Actions workflow.'
+author: 'Kishan B'
+inputs:
+  github-token:
+    description: 'The GitHub token used to create an authenticated client'
+    default: ${{ github.token }}
+    required: false
+  tf-summarize-version:
+    description:
+      'The version of the tf-summarize cli to install. Defaults to `latest`.'
+    default: latest
+    required: false
+runs:
+  pre: chainguard-phonehome.js
+  using: 'node24'
+  main: 'dist/index.js'
+branding:
+  icon: 'terminal'
+  color: 'gray-dark'
