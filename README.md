@@ -6,9 +6,9 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 ## Versions
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v3.0.0 | [`v3.0.0`](https://github.com/chainguard-actions/kishaningithub-setup-tf-summarize/tree/v3.0.0) | [`1596bb0`](https://github.com/kishaningithub/setup-tf-summarize/commit/1596bb06f9509eb36b71bc1b304407cc111059c0) |
+| Version | Tag | Upstream commit | Hardening report |
+|---------|-----|-----------------|------------------|
+| v3.0.0 | [`v3.0.0`](https://github.com/chainguard-actions/kishaningithub-setup-tf-summarize/tree/v3.0.0) | [`1596bb0`](https://github.com/kishaningithub/setup-tf-summarize/commit/1596bb06f9509eb36b71bc1b304407cc111059c0) | [`HARDENING.md`](https://github.com/chainguard-actions/kishaningithub-setup-tf-summarize/blob/v3.0.0/HARDENING.md) |
 
 ## Privacy
 
